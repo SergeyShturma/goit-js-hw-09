@@ -78,15 +78,16 @@ function onClick(e) {
     btn.disabled = true;
     let countdown = new Date(inputEl.value) - new Date();
 
-    if (countdown <= 0) {
+    if (countdown >= 0) {
+      days.textContent = addLeadingZero(convertMs(countdown).days);
+      hours.textContent = addLeadingZero(convertMs(countdown).hours);
+      min.textContent = addLeadingZero(convertMs(countdown).minutes);
+      sec.textContent = addLeadingZero(convertMs(countdown).seconds);
+    } else {
       Notiflix.Notify.success('We are done!');
       timerEl.style.color = 'red';
 
       clearInterval(timer);
     }
-    days.textContent = addLeadingZero(convertMs(countdown).days);
-    hours.textContent = addLeadingZero(convertMs(countdown).hours);
-    min.textContent = addLeadingZero(convertMs(countdown).minutes);
-    sec.textContent = addLeadingZero(convertMs(countdown).seconds);
   }, 1000);
 }
