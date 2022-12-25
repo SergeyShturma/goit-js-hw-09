@@ -4,9 +4,9 @@ const stop = document.querySelector('button[data-stop]');
 stop.disabled = true;
 start.addEventListener('click', onStart);
 function onStart() {
+  start.disabled = true;
+  stop.disabled = false;
   timerId = setInterval(() => {
-    start.disabled = true;
-    stop.disabled = false;
     document.body.style.background = getRandomHexColor();
   }, 1000);
 }
